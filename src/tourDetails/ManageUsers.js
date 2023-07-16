@@ -4,6 +4,7 @@ import axios from "axios";
 import "./css/manageTours.css";
 import { useSelector } from "react-redux";
 import SideNav from "../navbar/SideNav";
+const base_url = process.env.REACT_APP_BASE_URL;
 
 function importAll(r) {
   let images = {};
@@ -33,9 +34,7 @@ function ManageUsers() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/users`
-        );
+        const response = await axios.get(`${base_url}/api/v1/users`);
         console.log("response: ", response);
         setUserData(response.data.data.data);
       } catch (error) {
@@ -54,14 +53,11 @@ function ManageUsers() {
       return;
     }
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/users/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.delete(`${base_url}/api/v1/users/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       toast.success("Account has been deleted");
     } catch (error) {
       console.log(error);

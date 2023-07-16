@@ -18,6 +18,7 @@ function ManageTours() {
   const [tour, setTour] = useState([]);
   const [error, setError] = useState(false);
   const { year } = useParams();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const [activeTab, setActiveTab] = useState(year);
 
@@ -29,7 +30,7 @@ function ManageTours() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/tours/monthly-plan/${year}`
+          `${base_url}/api/v1/tours/monthly-plan/${year}`
         );
         setTour(response.data.data.plan);
       } catch (error) {

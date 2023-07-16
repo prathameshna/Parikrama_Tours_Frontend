@@ -35,6 +35,7 @@ function BookingModal({ tourId, closeModal }) {
   const [price, setPrice] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     if (userData) {
@@ -45,9 +46,7 @@ function BookingModal({ tourId, closeModal }) {
   useEffect(() => {
     const fetchTourDetails = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/tours/${tourId}`
-        );
+        const response = await axios.get(`${base_url}/api/v1/tours/${tourId}`);
         const tourData = response.data.data.data;
         setTourData(tourData);
         setTourName(tourData.name);
@@ -92,7 +91,7 @@ function BookingModal({ tourId, closeModal }) {
   const handleBookingTourClick = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/booking`;
+      const url = `${base_url}/api/v1/booking`;
       const data = {
         tourId,
         userId,

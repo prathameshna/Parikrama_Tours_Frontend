@@ -4,8 +4,11 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
 
 const MapboxMap = ({ locations }) => {
+  const accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+  const mapStyle = process.env.REACT_APP_MAPBOX_STYLE;
+
   useEffect(() => {
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+    mapboxgl.accessToken = accessToken;
 
     mapboxgl.workerClass =
       require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -13,7 +16,7 @@ const MapboxMap = ({ locations }) => {
     const map = new mapboxgl.Map({
       container: "map",
       //   style: "mapbox://styles/pratham0280/cliod1zr0000601o14nto8pys",
-      style: process.env.REACT_APP_MAPBOX_STYLE,
+      style: mapStyle,
       scrollZoom: false,
     });
 

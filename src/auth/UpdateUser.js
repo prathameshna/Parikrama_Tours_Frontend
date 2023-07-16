@@ -28,6 +28,7 @@ const UpdateUser = () => {
   const [id, setId] = useState(userData ? userData._id : "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     if (userData) {
@@ -39,7 +40,7 @@ const UpdateUser = () => {
     console.log(id);
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/updateMe`;
+      const url = `${base_url}/api/v1/users/updateMe`;
       const data = {
         id,
         name,
@@ -69,7 +70,7 @@ const UpdateUser = () => {
   const handleUpdatePasswordFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/updateMyPassword`;
+      const url = `${base_url}/api/v1/users/updateMyPassword`;
       const data = {
         id,
         passwordCurrent,
@@ -106,15 +107,12 @@ const UpdateUser = () => {
       return;
     }
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/users/deleteMe`,
-        {
-          data: { id },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.delete(`${base_url}/api/v1/users/deleteMe`, {
+        data: { id },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       // toast.success("Account has been deleted");
       window.localStorage.removeItem("userData");
       window.location.href = "/";

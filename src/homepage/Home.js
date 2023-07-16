@@ -3,6 +3,7 @@ import axios from "axios";
 import "./home.css";
 import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
+const base_url = process.env.REACT_APP_BASE_URL;
 
 // Import the entire 'tours' folder using require.context
 function importAll(r) {
@@ -21,11 +22,11 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `${process.env.REACT_APP_BASE_URL}/api/v1/tours`;
+        let url = `${base_url}/api/v1/tours`;
 
         // Check if the URL should be changed to "top-5-cheap"
         if (window.location.href.includes("top-6-cheap")) {
-          url = `${process.env.REACT_APP_BASE_URL}/api/v1/tours/top-6-cheap`;
+          url = `${base_url}/api/v1/tours/top-6-cheap`;
         }
         const response = await axios.get(url);
         setTours(response.data.data.data);

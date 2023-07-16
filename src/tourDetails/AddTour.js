@@ -17,11 +17,12 @@ function AddTour() {
     coordinates: [],
   });
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const handleAddTourForm = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/tours`;
+      const url = `${base_url}/api/v1/tours`;
       const data = {
         name,
         duration,

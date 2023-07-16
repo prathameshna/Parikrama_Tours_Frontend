@@ -8,12 +8,13 @@ import "./css/forgotPasswordForm.css";
 function ModalForm({ closeModal }) {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const handleFormReset = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/users/forgotPassword`,
+        `${base_url}/api/v1/users/forgotPassword`,
         { email: email },
         {
           headers: {

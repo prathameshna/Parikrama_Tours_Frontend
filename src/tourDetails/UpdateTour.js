@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import "../auth/css/updateUser.css";
+const base_url = process.env.REACT_APP_BASE_URL;
 
 const divItem = (title, type, value, setValue) => (
   <div className="form__group ma-bt-md">
@@ -51,9 +52,7 @@ function UpdateTour() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/tours/${id}`
-        );
+        const response = await axios.get(`${base_url}/api/v1/tours/${id}`);
         setTour(response.data.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -76,7 +75,7 @@ function UpdateTour() {
   const handleTourFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/tours/${id}`;
+      const url = `${base_url}/api/v1/tours/${id}`;
       const data = {
         name,
         duration,
@@ -113,14 +112,11 @@ function UpdateTour() {
       return;
     }
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/tours/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.delete(`${base_url}/api/v1/tours/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       toast.success("Tour has been Deleted");
       navigate("/");
     } catch (error) {

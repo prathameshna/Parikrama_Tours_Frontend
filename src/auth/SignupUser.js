@@ -31,19 +31,17 @@ function SignupUser() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setpasswordConfirm] = useState("");
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/users/signup`,
-        {
-          name,
-          email,
-          password,
-          passwordConfirm,
-        }
-      );
+      const response = await axios.post(`${base_url}/api/v1/users/signup`, {
+        name,
+        email,
+        password,
+        passwordConfirm,
+      });
 
       const responseData = response.data;
       console.log(responseData);

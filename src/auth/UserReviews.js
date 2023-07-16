@@ -10,6 +10,7 @@ function UserReviews() {
   const [reviewData, setReviewData] = useState([]);
   const [error, setError] = useState(false);
   const [tourName, setTourName] = useState("");
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     if (user) {
@@ -20,9 +21,7 @@ function UserReviews() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/reviews`
-        );
+        const response = await axios.get(`${base_url}/api/v1/reviews`);
         console.log("response: ", response.data.data.data);
         const filteredReviews = response.data.data.data.filter(
           (review) => review.user._id === userId
@@ -47,7 +46,7 @@ function UserReviews() {
 
         const tourIds = reviewData.map((review) => review.tour);
         const requests = tourIds.map((tourId) =>
-          fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/tours/${tourId}`)
+          fetch(`${base_url}/api/v1/tours/${tourId}`)
         );
         const responses = await Promise.all(requests);
 
@@ -74,14 +73,11 @@ function UserReviews() {
       return;
     }
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/reviews/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.delete(`${base_url}/api/v1/reviews/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       toast.success("Review has been deleted");
     } catch (error) {
       console.log(error);

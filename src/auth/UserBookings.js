@@ -10,6 +10,7 @@ function UserBookings() {
   const [userId, setUserId] = useState(userData ? userData._id : "");
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState(false);
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     if (userData) {
@@ -21,7 +22,7 @@ function UserBookings() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/booking/${userId}`
+          `${base_url}/api/v1/booking/${userId}`
         );
         const bookedTours = response.data;
         console.log(bookedTours.data);
@@ -42,14 +43,11 @@ function UserBookings() {
       return;
     }
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/booking/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.delete(`${base_url}/api/v1/booking/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       toast.success("Booking has been canceled");
       window.location.reload();
     } catch (error) {

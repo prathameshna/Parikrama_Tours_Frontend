@@ -26,11 +26,12 @@ function ResetPassword() {
   const [passwordConfirm, setpasswordConfirm] = useState("");
   const { token } = useParams();
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/resetPassword/${token}`;
+      const url = `${base_url}/api/v1/users/resetPassword/${token}`;
       const data = {
         password,
         passwordConfirm,

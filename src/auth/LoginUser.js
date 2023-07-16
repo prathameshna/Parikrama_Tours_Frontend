@@ -28,11 +28,12 @@ function LoginUser() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/login`;
+      const url = `${base_url}/api/v1/users/login`;
       const data = {
         email,
         password,

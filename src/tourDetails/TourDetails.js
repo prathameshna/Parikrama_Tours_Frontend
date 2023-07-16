@@ -7,6 +7,7 @@ import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
 import BookingModal from "./BookingModal";
 import MapboxMap from "./MapboxMap";
+const base_url = process.env.REACT_APP_BASE_URL;
 
 function importAll(r) {
   let images = {};
@@ -31,9 +32,7 @@ function TourDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/tours/${id}`
-        );
+        const response = await axios.get(`${base_url}/api/v1/tours/${id}`);
         setTour(response.data.data.data);
         setLocations(response.data.data.data.locations);
       } catch (error) {
