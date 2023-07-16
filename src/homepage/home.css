@@ -304,6 +304,9 @@
     grid-column-gap: 0;
     padding: 1rem 1.5rem;
   }
+  .heading-tertirary {
+    font-size: 1.5rem;
+  }
 }
 
 /* Tablets */
