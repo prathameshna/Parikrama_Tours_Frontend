@@ -4,13 +4,13 @@ import "./css/manageTours.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import SideNav from "../navbar/SideNav";
-const base_url = process.env.REACT_APP_BASE_URL;
 
 function ManageBookings() {
   const user = useSelector((state) => state.user);
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState(false);
   const [userName, setUserName] = useState("");
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {

@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import "../auth/css/updateUser.css";
-const base_url = process.env.REACT_APP_BASE_URL;
 
 const divItem = (title, type, value, setValue) => (
   <div className="form__group ma-bt-md">
@@ -37,6 +36,7 @@ const divItem = (title, type, value, setValue) => (
 );
 
 function UpdateTour() {
+  const base_url = process.env.REACT_APP_BASE_URL;
   const [tour, setTour] = useState({});
   const [error, setError] = useState(false);
   const { id } = useParams();

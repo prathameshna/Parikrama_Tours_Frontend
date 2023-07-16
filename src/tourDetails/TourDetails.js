@@ -7,7 +7,6 @@ import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
 import BookingModal from "./BookingModal";
 import MapboxMap from "./MapboxMap";
-const base_url = process.env.REACT_APP_BASE_URL;
 
 function importAll(r) {
   let images = {};
@@ -21,6 +20,7 @@ const tourImages = importAll(require.context("../images/tours"));
 const userImage = importAll(require.context("../images/users"));
 
 function TourDetails() {
+  const base_url = process.env.REACT_APP_BASE_URL;
   const [tour, setTour] = useState({});
   const [error, setError] = useState(false);
   const { id } = useParams();

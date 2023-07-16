@@ -3,7 +3,6 @@ import axios from "axios";
 import "./css/manageTours.css";
 import { useSelector } from "react-redux";
 import SideNav from "../navbar/SideNav";
-const base_url = process.env.REACT_APP_BASE_URL;
 
 function ManageReviews() {
   const user = useSelector((state) => state.user);
@@ -11,6 +10,7 @@ function ManageReviews() {
   const [error, setError] = useState(false);
   const [tourName, setTourName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   // Define the number of reviews per page
   const reviewsPerPage = 6;

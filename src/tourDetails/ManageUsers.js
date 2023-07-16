@@ -4,7 +4,6 @@ import axios from "axios";
 import "./css/manageTours.css";
 import { useSelector } from "react-redux";
 import SideNav from "../navbar/SideNav";
-const base_url = process.env.REACT_APP_BASE_URL;
 
 function importAll(r) {
   let images = {};
@@ -17,6 +16,7 @@ function importAll(r) {
 const userImage = importAll(require.context("../images/users"));
 
 function ManageUsers() {
+  const base_url = process.env.REACT_APP_BASE_URL;
   const user = useSelector((state) => state.user);
   const [userData, setUserData] = useState([]);
   const [error, setError] = useState(false);
