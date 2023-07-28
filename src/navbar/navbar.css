@@ -149,9 +149,7 @@ a.btn-margin-top.btn1 {
   }
 
   .navbar-nav li {
-    margin: 0;
-    margin-bottom: 0.6rem;
-    margin-top: -1rem;
+    margin: auto;
   }
 
   .btn1,
@@ -168,13 +166,17 @@ a.btn-margin-top.btn1 {
     width: 5rem;
   }
 
+  header {
+    padding: 0 1rem;
+  }
+
   .card__picture-img-user-nav {
     width: 75%;
   }
 
   .navbar-logo {
     height: 5rem;
-    width: 10rem;
+    width: 12rem;
   }
 
   .btn-transs {

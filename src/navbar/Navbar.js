@@ -106,21 +106,17 @@ function Navbar() {
         ) : (
           <React.Fragment>
             <li className="nav-item">
-              <a className="btn1" style={{ marginTop: "2rem" }} href="/">
+              <a className="btn1" href="/">
                 All Tours
               </a>
             </li>
             <li className="nav-item">
-              <a
-                className="btn1"
-                style={{ marginTop: "2rem" }}
-                href="/top-6-cheap"
-              >
+              <a className="btn1" href="/top-6-cheap">
                 Top 6 Affordable
               </a>
             </li>
             <li className="nav-item">
-              <Link className="btn1" style={{ marginTop: "2rem" }} to="/login">
+              <Link className="btn1" to="/login">
                 Log in
               </Link>
             </li>

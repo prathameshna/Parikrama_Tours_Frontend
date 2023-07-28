@@ -91,6 +91,7 @@ function ManageReviews() {
         },
       });
       toast.success("Review has been deleted");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

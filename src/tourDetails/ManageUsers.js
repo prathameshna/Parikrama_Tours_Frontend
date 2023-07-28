@@ -59,6 +59,7 @@ function ManageUsers() {
         },
       });
       toast.success("Account has been deleted");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
