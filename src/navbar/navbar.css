@@ -30,7 +30,6 @@ header {
   position: relative;
   z-index: 100;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -141,22 +140,18 @@ a.btn-margin-top.btn1 {
 
 @media only screen and (max-width: 685px) {
   .navbar {
-    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
   }
 
   .navbar-logo {
-    margin-bottom: 1rem;
-  }
-
-  .navbar-nav {
-    flex-basis: 100%;
-    justify-content: flex-start;
-    margin-top: 1rem;
+    margin-bottom: auto;
   }
 
   .navbar-nav li {
     margin: 0;
     margin-bottom: 0.6rem;
+    margin-top: -1rem;
   }
 
   .btn1,
@@ -178,8 +173,8 @@ a.btn-margin-top.btn1 {
   }
 
   .navbar-logo {
-    height: 7rem;
-    width: 15rem;
+    height: 5rem;
+    width: 10rem;
   }
 
   .btn-transs {

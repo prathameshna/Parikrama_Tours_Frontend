@@ -29,10 +29,7 @@ html {
 
 body {
   line-height: 1.6;
-  font-weight: 300;
-  font-family: "Lato", sans-serif;
   color: #777;
-  padding: 3rem;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -143,14 +140,12 @@ body {
   filter: drop-shadow(0 0.75rem 0.5rem rgba(0, 0, 0, 0.25));
 }
 
-.heading-primary,
-.heading-tertirary {
+.heading-primary {
   color: #fff;
   text-transform: uppercase;
   font-weight: 300;
 }
-.heading-primary span,
-.heading-tertirary span {
+.heading-primary span {
   padding: 1rem 1.5rem;
   line-height: 1;
   -webkit-box-decoration-break: clone;
@@ -700,6 +695,10 @@ body {
 
 /* Mobile Phones */
 @media only screen and (max-width: 480px) {
+  .main {
+    padding: 3rem 5rem;
+  }
+
   .card__picture-img-cover {
     -o-object-fit: cover;
     object-fit: cover;
@@ -707,13 +706,9 @@ body {
     width: 100%;
     opacity: 3;
   }
-  .heading-box {
-    position: absolute;
-    bottom: 5vw;
-  }
 
   .heading-primary {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .heading-box__group {
     margin-top: 1rem;
@@ -733,7 +728,8 @@ body {
     margin-top: 0rem;
   }
   .heading-secondary {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
   }
   .overview-box__label {
     font-size: 1rem;
@@ -744,6 +740,11 @@ body {
   .section-description {
     display: block;
     margin-top: -3rem;
+  }
+
+  .description-box .description__text {
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
   }
 
   .overview-box {
@@ -847,5 +848,34 @@ body {
     display: flex;
     align-items: center;
     margin-top: -45rem;
+  }
+
+  .heading-primary span {
+    padding: 0.5rem 1rem;
+    line-height: 1;
+  }
+
+  .overview-box__group:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+
+  .overview-box__detail:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    position: relative;
+    height: 55vw;
+  }
+
+  .heading-box__text {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1050px) {
+  .section-header {
+    position: relative;
+    height: 55vw;
   }
 }

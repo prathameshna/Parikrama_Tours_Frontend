@@ -124,11 +124,6 @@ function Navbar() {
                 Log in
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link className="btn1" style={{ marginTop: "2rem" }} to="/signup">
-                Sign up
-              </Link>
-            </li> */}
           </React.Fragment>
         )}
       </ul>

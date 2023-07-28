@@ -56,15 +56,18 @@
   }
 
   .footer__nav {
-    list-style: none;
-    display: flex;
-    flex-direction: column; /* Add this line */
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .footer__copyright {
+    justify-self: unset;
+    color: #999;
+    font-size: 1.4rem;
   }
 }
 
 /* Tablets */
-@media only screen and (min-width: 481px) and (max-width: 830px) {
+@media only screen and (min-width: 481px) and (max-width: 930px) {
   .footer {
     grid-template-columns: repeat(2, 1fr);
     padding: 2rem;
@@ -81,7 +84,7 @@
 }
 
 /* Laptops and Desktops */
-@media only screen and (min-width: 831px) {
+@media only screen and (min-width: 931px) {
   .footer {
     grid-template-columns: repeat(2, 1fr);
     padding: 2rem 4rem;

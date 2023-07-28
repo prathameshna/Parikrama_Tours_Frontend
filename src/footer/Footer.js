@@ -26,7 +26,7 @@ function Footer() {
             <a href="#">Contact</a>
           </li>
         </ul>
-        <p className="footer__copyright">&copy; by Prathamesh Nadhe.</p>
+        <p className="footer__copyright">&copy; by Prathamesh Nadhe</p>
       </footer>
     </React.Fragment>
   );
