@@ -138,23 +138,7 @@ a.btn-margin-top.btn1 {
   margin: 0 0.6rem;
 }
 
-@media only screen and (max-width: 380px) {
-  .btn1,
-  .btn1:link,
-  .btn1:visited {
-    margin: 0.2rem;
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-  }
-
-  .btn2,
-  .btn2:link,
-  .btn2:visited {
-    width: 5rem;
-  }
-}
-
-@media screen and (min-width: 381px) and (max-width: 685) {
+@media only screen and (max-width: 685px) {
   .navbar {
     display: flex;
     align-items: center;
@@ -172,7 +156,7 @@ a.btn-margin-top.btn1 {
   .btn1:link,
   .btn1:visited {
     margin: 0.2rem;
-    font-size: 1rem;
+    font-size: 0.7rem;
     padding: 0.2rem 0.6rem;
   }
 
