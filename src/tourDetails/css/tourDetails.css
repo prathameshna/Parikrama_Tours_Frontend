@@ -693,8 +693,14 @@ body {
   margin-left: 1rem;
 }
 
+@media only screen and (max-width: 380px) {
+  .main {
+    padding: 3rem 3rem;
+  }
+}
+
 /* Mobile Phones */
-@media only screen and (max-width: 480px) {
+@media screen and (min-width: 381px) and (max-width: 481px) {
   .main {
     padding: 3rem 5rem;
   }
