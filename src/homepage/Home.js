@@ -24,7 +24,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `https://parikrama-tours-backend.onrender.com/api/v1/tours`;
+        let url = `${base_url}/api/v1/tours`;
 
         // Check if the URL should be changed to "top-6-cheap"
         if (window.location.href.includes("top-6-cheap")) {
