@@ -40,14 +40,14 @@ function Home() {
     };
     fetchData();
   }, []);
-  console.log(tours);
+  // console.log(tours);
   return (
     <>
       {loading ? (
-        <div class="text-center" style={{ margin: "5rem" }}>
-          <h1 class="sr-only">Please wait tours are loading...</h1>
+        <div className="text-center" style={{ margin: "5rem" }}>
+          <h1 className="sr-only">Please wait tours are loading...</h1>
           <div
-            class="spinner-border text-success"
+            className="spinner-border text-success"
             style={{ height: "5rem", width: "5rem" }}
             role="status"
           ></div>

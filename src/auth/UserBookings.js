@@ -4,12 +4,16 @@ import "../tourDetails/css/manageTours.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import SideNav from "../navbar/SideNav";
+import ReviewModal from "./ReviewModal";
 
 function UserBookings() {
   const userData = useSelector((state) => state.user);
   const [userId, setUserId] = useState(userData ? userData._id : "");
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedTourName, setSelectedTourName] = useState("");
+  const [selectedTourId, setSelectedTourId] = useState("");
   const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
@@ -17,7 +21,8 @@ function UserBookings() {
       setUserId(userData._id);
     }
   }, [userData]);
-  console.log(userId);
+  // console.log(userData);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,7 +30,7 @@ function UserBookings() {
           `${base_url}/api/v1/booking/${userId}`
         );
         const bookedTours = response.data;
-        console.log(bookedTours.data);
+        // console.log(bookedTours.data);
         setBookings(bookedTours.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -52,6 +57,43 @@ function UserBookings() {
       window.location.reload();
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleOpenModal = (tourName, tourId) => {
+    setSelectedTourName(tourName);
+    setSelectedTourId(tourId);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedTourName(null);
+    setSelectedTourId(null);
+  };
+
+  const handleSubmitReview = async (tourId, review, rating) => {
+    try {
+      const url = `${base_url}/api/v1/reviews`;
+      const data = {
+        review,
+        rating,
+        tour: tourId,
+        user: userData._id,
+      };
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const responseData = response.data;
+      if (responseData.status === "success") {
+        toast.success("Thank you for giving review");
+      } else {
+        console.log("responseData error", responseData);
+      }
+    } catch (error) {
+      toast.error("You already gave the review!");
     }
   };
 
@@ -117,55 +159,82 @@ function UserBookings() {
                               </tr>
                             </thead>
                             <tbody>
-                              {bookings.map((booking) => (
-                                <tr key={booking._id} className="inner-box">
-                                  <th scope="row">
-                                    <div className="text-user">
-                                      {booking.tourName}
-                                    </div>
-                                  </th>
-                                  <td>
-                                    <div className="text-user">
-                                      {new Date(
-                                        booking.startDate
-                                      ).toLocaleDateString("en-US", {
-                                        month: "long",
-                                        day: "numeric",
-                                        year: "numeric",
-                                      })}
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="text-user">
-                                      {booking.members}
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="text-user">
-                                      {booking.price}
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="text-user">
-                                      {booking.totalPrice}
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="event-wrap">
-                                      <button
-                                        className="btn btn--small btn--red "
-                                        type="button"
-                                        onClick={() =>
-                                          handleDeleteBooking(booking._id)
-                                        }
-                                      >
-                                        Cancel Booking
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))}
+                              {bookings.map((booking) => {
+                                const startDate = new Date(booking.startDate);
+                                const today = new Date();
+                                const showReviewButton = startDate < today; // Compare dates
+
+                                return (
+                                  <tr key={booking._id} className="inner-box">
+                                    <td scope="row">
+                                      <div className="text-user">
+                                        {booking.tourName}
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div className="text-user">
+                                        {startDate.toLocaleDateString("en-US", {
+                                          month: "long",
+                                          day: "numeric",
+                                          year: "numeric",
+                                        })}
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div className="text-user">
+                                        {booking.members}
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div className="text-user">
+                                        {booking.price}
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div className="text-user">
+                                        {booking.totalPrice}
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div className="event-wrap">
+                                        {showReviewButton ? ( // Render the appropriate button based on the comparison
+                                          <button
+                                            className="btn btn--small btn--yellow"
+                                            type="button"
+                                            onClick={() =>
+                                              handleOpenModal(
+                                                booking.tourName,
+                                                booking.tourId
+                                              )
+                                            }
+                                          >
+                                            Give Your Review
+                                          </button>
+                                        ) : (
+                                          <button
+                                            className="btn btn--small btn--red"
+                                            type="button"
+                                            onClick={() =>
+                                              handleDeleteBooking(booking._id)
+                                            }
+                                          >
+                                            Cancel Booking
+                                          </button>
+                                        )}
+                                      </div>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
                             </tbody>
+                            {showModal && (
+                              <ReviewModal
+                                tourName={selectedTourName}
+                                tourId={selectedTourId}
+                                onClose={handleCloseModal}
+                                onSubmit={handleSubmitReview}
+                              />
+                            )}
                           </table>
                         </div>
                       )}

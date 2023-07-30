@@ -68,13 +68,32 @@ a.btn-margin-top.btn1 {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
+.btn2,
+.btn2:link,
+.btn2:visited {
+  color: black;
+  padding: 0.6rem 0rem;
+  border-radius: 10rem;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-backface-visibility: hidden;
+  border: none;
+}
+
+.btn2:hover {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
 .dropdown-hover .dropdown-menu {
   display: block;
-  padding-left: 0rem;
+  /* padding-left: 0rem; */
   padding-right: 0rem;
-  position: relative;
-  font-size: 16px;
-  line-height: 56px;
+  position: absolute;
+  font-size: 2rem;
+  line-height: 6rem;
   color: #353030;
   font-weight: bold;
   transition: 0.3s;
@@ -85,7 +104,7 @@ a.btn-margin-top.btn1 {
 .dropdown-hover:hover .dropdown-menu {
   display: block;
   position: absolute;
-  inset: 0px auto auto 0px;
+  inset: 0px 0px auto auto;
   margin: 0px;
   transform: translate3d(6.22222px, 100.444px, 0px);
   text-align: center;
@@ -132,10 +151,6 @@ a.btn-margin-top.btn1 {
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
-}
-
-.navbar-nav li {
-  margin: 0 0.6rem;
 }
 
 @media only screen and (max-width: 685px) {

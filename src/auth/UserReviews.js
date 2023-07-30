@@ -3,6 +3,7 @@ import axios from "axios";
 import "../tourDetails/css/manageTours.css";
 import { useSelector } from "react-redux";
 import SideNav from "../navbar/SideNav";
+import { toast } from "react-toastify";
 
 function UserReviews() {
   const user = useSelector((state) => state.user);
@@ -10,6 +11,8 @@ function UserReviews() {
   const [reviewData, setReviewData] = useState([]);
   const [error, setError] = useState(false);
   const [tourName, setTourName] = useState("");
+  const [review, setReview] = useState("");
+  const [rating, setRating] = useState("");
   const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
@@ -22,12 +25,19 @@ function UserReviews() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${base_url}/api/v1/reviews`);
-        console.log("response: ", response.data.data.data);
+
         const filteredReviews = response.data.data.data.filter(
           (review) => review.user._id === userId
         );
-        console.log("filteredReviews: ", filteredReviews);
-        setReviewData(filteredReviews);
+        // console.log("filteredReviews: ", filteredReviews);
+        setReviewData(
+          filteredReviews.map((review) => ({
+            _id: review._id,
+            review: review.review,
+            rating: review.rating,
+            tour: review.tour,
+          }))
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);
@@ -53,6 +63,7 @@ function UserReviews() {
         const tours = await Promise.all(
           responses.map((response) => response.json())
         );
+        console.log(tours);
 
         const tourNames = tours.map((tour) => tour.data.data.name);
         setTourName(tourNames);
@@ -63,9 +74,37 @@ function UserReviews() {
     };
 
     fetchTourNames();
-  }, [reviewData]);
+  }, [reviewData, base_url]);
 
-  const handleDeleteUser = async (id) => {
+  const handleUpdateReview = async (id) => {
+    const url = `${base_url}/api/v1/reviews/${id}`;
+    const reviewToUpdate = reviewData.find((review) => review._id === id);
+
+    if (!reviewToUpdate) {
+      // Review not found in the state, handle the error as needed
+      console.error("Review not found in the state.");
+      return;
+    }
+
+    const data = {
+      review: reviewToUpdate.review,
+      rating: reviewToUpdate.rating,
+    };
+
+    try {
+      await axios.patch(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      toast.success("Review has been updated");
+    } catch (error) {
+      console.log(error);
+      toast.error("Rating should be betweem 1 to 5.");
+    }
+  };
+
+  const handleDeleteReview = async (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete review? This action cannot be undone."
     );
@@ -79,6 +118,7 @@ function UserReviews() {
         },
       });
       toast.success("Review has been deleted");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -111,25 +151,25 @@ function UserReviews() {
                                   className="text-center title-list"
                                   scope="col"
                                 >
-                                  Tour
+                                  TOUR
                                 </th>
                                 <th
                                   className="text-center title-list"
                                   scope="col"
                                 >
-                                  Review
+                                  REVIEW
                                 </th>
                                 <th
                                   className="text-center title-list"
                                   scope="col"
                                 >
-                                  Ratings
+                                  RATINGS
                                 </th>
                                 <th
                                   className="text-center title-list"
                                   scope="col"
                                 >
-                                  Delete Review
+                                  UPDATE / DELETE
                                 </th>
                               </tr>
                             </thead>
@@ -143,21 +183,63 @@ function UserReviews() {
                                   </td>
                                   <td>
                                     <div className="text-user">
-                                      {review.review}
+                                      <textarea
+                                        id="name"
+                                        className="form__input__review form__input"
+                                        value={review.review}
+                                        required
+                                        onChange={(e) =>
+                                          setReviewData((prevReviewData) => {
+                                            const updatedReviewData = [
+                                              ...prevReviewData,
+                                            ];
+                                            updatedReviewData[index].review =
+                                              e.target.value;
+                                            return updatedReviewData;
+                                          })
+                                        }
+                                      ></textarea>
                                     </div>
                                   </td>
                                   <td>
                                     <div className="text-user">
-                                      {review.rating}
+                                      <input
+                                        id="name"
+                                        className="form__input__rating form__input"
+                                        type="number"
+                                        value={review.rating}
+                                        required
+                                        name="rating"
+                                        onChange={(e) =>
+                                          setReviewData((prevReviewData) => {
+                                            const updatedReviewData = [
+                                              ...prevReviewData,
+                                            ];
+                                            updatedReviewData[index].rating =
+                                              e.target.value;
+                                            return updatedReviewData;
+                                          })
+                                        }
+                                      />
                                     </div>
                                   </td>
                                   <td>
                                     <div className="event-wrap">
                                       <button
+                                        className="btn btn--small btn--yellow "
+                                        type="button"
+                                        onClick={() =>
+                                          handleUpdateReview(review._id)
+                                        }
+                                        style={{ color: "#444" }}
+                                      >
+                                        Update Review
+                                      </button>
+                                      <button
                                         className="btn btn--small btn--red "
                                         type="button"
                                         onClick={() =>
-                                          handleDeleteUser(review._id)
+                                          handleDeleteReview(review._id)
                                         }
                                       >
                                         Delete Review

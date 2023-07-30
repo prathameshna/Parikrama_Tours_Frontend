@@ -285,7 +285,7 @@ function TourDetails() {
               ) : (
                 <a
                   className="btn btn--green span-all-rows button-margin"
-                  onClick={() => handleBookingTourClick(id)}
+                  onClick={() => handleBookingTourClick(tour.id)}
                 >
                   Book tour now!
                 </a>

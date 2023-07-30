@@ -91,7 +91,7 @@ function ManageUsers() {
                             <thead>
                               <tr>
                                 <th
-                                  className="text-center title-list"
+                                  className="text-center title-list hide-on-mobile"
                                   scope="col"
                                 >
                                   Photo
@@ -109,7 +109,7 @@ function ManageUsers() {
                                   Email
                                 </th>
                                 <th
-                                  className="text-center title-list"
+                                  className="text-center title-list hide-on-mobile"
                                   scope="col"
                                 >
                                   Role
@@ -125,7 +125,7 @@ function ManageUsers() {
                             <tbody>
                               {currentUsers.map((user) => (
                                 <tr key={user._id} className="inner-box">
-                                  <th scope="row">
+                                  <td className="hide-on-mobile">
                                     <div className="form__group">
                                       <img
                                         className="form__user-photo"
@@ -133,7 +133,7 @@ function ManageUsers() {
                                         alt={user.name}
                                       />
                                     </div>
-                                  </th>
+                                  </td>
                                   <td>
                                     <div className="text-user">{user.name}</div>
                                   </td>
@@ -142,7 +142,7 @@ function ManageUsers() {
                                       {user.email}
                                     </div>
                                   </td>
-                                  <td>
+                                  <td className="hide-on-mobile">
                                     <div className="text-user">{user.role}</div>
                                   </td>
                                   <td>

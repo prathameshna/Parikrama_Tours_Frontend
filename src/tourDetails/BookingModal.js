@@ -21,7 +21,8 @@ function Loading() {
 }
 
 function Error() {
-  return <div>Error loading tour details. Please try again later.</div>;
+  // return <div>Error loading tour details. Please try again later.</div>;
+  return <div></div>;
 }
 
 function BookingModal({ tourId, closeModal }) {

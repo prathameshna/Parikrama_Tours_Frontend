@@ -56,7 +56,7 @@
 }
 
 .sidebar--open {
-  width: 250px;
+  width: 30rem;
   transition: width 0.3s ease;
 }
 
@@ -78,4 +78,14 @@
 
 FontAwesomeIcon {
   background-color: #3f5159;
+}
+
+@media only screen and (max-width: 767px) {
+  .sidebar {
+    width: 5rem;
+  }
+
+  .sidebar--open {
+    width: 22rem;
+  }
 }

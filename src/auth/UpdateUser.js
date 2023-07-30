@@ -37,7 +37,6 @@ const UpdateUser = () => {
   }, [userData]);
 
   const handleUserFormSubmit = async (event) => {
-    console.log(id);
     event.preventDefault();
     try {
       const url = `${base_url}/api/v1/users/updateMe`;

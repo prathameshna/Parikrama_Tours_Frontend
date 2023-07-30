@@ -600,17 +600,18 @@ body {
 }
 
 .btn--red {
-  background-color: #df3232;
+  background-color: #e53935;
   color: #fff;
 }
 
 .btn--red::after {
-  background-color: #df3232;
+  background-color: #e53935;
 }
 
 .btn--small {
   padding: 1.25rem 3rem !important;
   font-size: 1.4rem !important;
+  margin: 0.2rem;
 }
 
 .btn-small,
@@ -876,6 +877,12 @@ body {
 
   .heading-box__text {
     font-size: 0.6rem;
+  }
+
+  .btn--small {
+    padding: 1rem 2rem !important;
+    font-size: 0.8rem !important;
+    margin: 0.2rem;
   }
 }
 

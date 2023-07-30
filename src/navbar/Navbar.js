@@ -50,14 +50,12 @@ function Navbar() {
             </li>
             <li className="dropdown dropdown-hover">
               <button
-                className=" btn1 btn2 btn-transs"
+                className=" btn2 btn-transs"
                 type="button"
                 id="dropdownMenuButton"
                 data-bs-toggle="dropdown"
-                aria-expanded="false"
                 style={{
                   backgroundColor: "transparent",
-                  marginBottom: "0rem",
                 }}
               >
                 <img
@@ -66,10 +64,7 @@ function Navbar() {
                   className="card__picture-img-user-nav"
                 />
               </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
+              <ul className="dropdown-menu">
                 <li>
                   <Link to="/user-profile" className="dropdown-item">
                     {userData.name}

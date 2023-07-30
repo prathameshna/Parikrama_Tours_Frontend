@@ -330,7 +330,7 @@
 }
 
 /* For mobile devices */
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 380px) and (max-width: 830px) {
   .event-schedule-area .tab-area .nav-item {
     margin-right: 2rem;
     margin-left: 2rem;
@@ -399,6 +399,20 @@
     font-size: 2rem;
     text-align: center;
     padding-bottom: 1rem;
+  }
+
+  .event-schedule-area-two .tab-content .table thead tr th {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .text-user {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .hide-on-mobile {
+    display: none;
   }
 }
 

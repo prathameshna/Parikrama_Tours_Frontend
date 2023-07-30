@@ -34,7 +34,7 @@
   -ms-flex-align: center;
   align-items: center;
   color: #444;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
   font-weight: 400;
   text-decoration: none;
@@ -187,6 +187,17 @@
   color: #bbb;
 }
 
+.form__input__review {
+  height: 13rem;
+  width: 32rem;
+}
+
+.form__input__rating {
+  width: 7rem;
+  text-align: center;
+  margin-left: 3rem;
+}
+
 .form__user-photo {
   height: 7.5rem;
   width: 7.5rem;
@@ -214,14 +225,18 @@
   background-color: #e0e0e0;
 }
 
+.event-wrap {
+  text-align: center;
+}
+
 /* Mobile Phones */
 @media only screen and (max-width: 480px) {
   .main1 {
     padding: 0.1rem 0.1rem;
   }
+
   .admin-nav__heading {
-    margin: 0 0.15rem 0.15rem;
-    font-size: 1rem;
+    margin: 0 1.15rem 0.15rem;
   }
 
   .user-view__content {
@@ -234,14 +249,30 @@
     padding: 0 1rem;
   }
 
+  .side-nav a:link,
+  .side-nav a:visited {
+    padding: 1rem 1rem;
+  }
+
   .form__input {
     font-size: 1.2rem;
     padding: 0.75rem 1rem;
   }
+
+  .form__input__review {
+    font-size: 1rem;
+    padding: 1.25rem 1.75rem;
+    height: 9rem;
+    width: 20rem;
+  }
+
+  .form__input__rating {
+    margin-left: 3rem;
+  }
 }
 
 /* Tablets */
-@media only screen and (min-width: 481px) and (max-width: 830px) {
+@media only screen and (min-width: 480px) and (max-width: 830px) {
   .main {
     padding: 6rem 4rem;
   }
@@ -253,6 +284,15 @@
 
   .user-view__form-container {
     padding: 0 4rem;
+  }
+
+  .side-nav a:link,
+  .side-nav a:visited {
+    padding: 1rem 1rem;
+  }
+
+  .form__input__rating {
+    margin-left: 2rem;
   }
 
   .form__input {

@@ -1,0 +1,59 @@
+.reviews__star__modal {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 0.0625rem;
+}
+
+.reviews__star--active__modal {
+  fill: #55c57a;
+}
+
+.reviews__star--inactive__modal {
+  fill: #bbb;
+}
+
+.reviews__star__modal {
+  cursor: pointer;
+}
+
+.modal-content {
+  width: 80%;
+}
+
+.btn__modal,
+.btn__modal:link,
+.btn__modal:visited {
+  font-size: 1.6rem;
+  padding: 1.4rem 3rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s;
+  font-weight: 400;
+  backface-visibility: hidden;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-header__modal {
+  font-size: 2rem;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .custom-header__modal {
+    font-size: 1.5rem;
+  }
+
+  .btn__modal,
+  .btn__modal:link,
+  .btn__modal:visited {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+}

@@ -106,7 +106,7 @@ function ManageReviews() {
         <div className="user-view__content">
           <div className="event-schedule-area-two bg-color pad100">
             <div className="container">
-              <h1 className="h1-title">Manage Users</h1>
+              <h1 className="h1-title">Manage Reviews</h1>
               <div className="row">
                 <div className="col-lg-12">
                   <div className="tab-content" id="myTabContent">
@@ -155,11 +155,11 @@ function ManageReviews() {
                             <tbody>
                               {currentReviews.map((review, index) => (
                                 <tr key={review._id} className="inner-box">
-                                  <th scope="row">
+                                  <td scope="row">
                                     <div className="text-user">
                                       {review.user.name}
                                     </div>
-                                  </th>
+                                  </td>
                                   <td>
                                     <div className="text-user">
                                       {tourName[index]}
