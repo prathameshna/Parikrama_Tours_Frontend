@@ -94,6 +94,11 @@ const UpdateUser = () => {
       if (error.response.data.error.statusCode === 401) {
         toast.error(error.response.data.message);
       }
+      if (error.response.data.error.statusCode === 500) {
+        toast.error(
+          "Password must contain at least 1 uppercase letter, 1 number, and 1 symbol!"
+        );
+      }
     }
   };
 
