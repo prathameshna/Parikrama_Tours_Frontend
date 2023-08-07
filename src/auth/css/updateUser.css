@@ -188,11 +188,14 @@
 }
 
 .form__input__review {
+  font-size: 1.9rem;
+  /* padding: 1.25rem 1.75rem; */
   height: 13rem;
-  width: 32rem;
+  /* width: 32rem; */
 }
 
 .form__input__rating {
+  font-size: 1.9rem;
   width: 7rem;
   text-align: center;
   margin-left: 3rem;
@@ -267,6 +270,7 @@
   }
 
   .form__input__rating {
+    font-size: 1rem;
     margin-left: 3rem;
   }
 }

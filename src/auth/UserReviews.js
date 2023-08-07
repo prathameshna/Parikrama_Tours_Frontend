@@ -9,11 +9,14 @@ function UserReviews() {
   const user = useSelector((state) => state.user);
   const [userId, setUserId] = useState(user ? user._id : "");
   const [reviewData, setReviewData] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(-1);
   const [error, setError] = useState(false);
   const [tourName, setTourName] = useState("");
-  const [review, setReview] = useState("");
-  const [rating, setRating] = useState("");
-  const base_url = process.env.REACT_APP_BASE_URL;
+  const [base_url, setBaseUrl] = useState("");
+
+  useEffect(() => {
+    setBaseUrl(process.env.REACT_APP_BASE_URL);
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -44,7 +47,7 @@ function UserReviews() {
       }
     };
     fetchData();
-  }, []);
+  }, [userId, base_url]);
 
   useEffect(() => {
     const fetchTourNames = async () => {
@@ -76,7 +79,7 @@ function UserReviews() {
     fetchTourNames();
   }, [reviewData, base_url]);
 
-  const handleUpdateReview = async (id) => {
+  const handleUpdateReview = async (id, index) => {
     const url = `${base_url}/api/v1/reviews/${id}`;
     const reviewToUpdate = reviewData.find((review) => review._id === id);
 
@@ -98,6 +101,7 @@ function UserReviews() {
         },
       });
       toast.success("Review has been updated");
+      setEditingIndex(-1);
     } catch (error) {
       console.log(error);
       toast.error("Rating should be betweem 1 to 5.");
@@ -122,6 +126,10 @@ function UserReviews() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleCancelUpdate = () => {
+    setEditingIndex(-1);
   };
 
   return (
@@ -182,68 +190,109 @@ function UserReviews() {
                                     </div>
                                   </td>
                                   <td>
-                                    <div className="text-user">
-                                      <textarea
-                                        id="name"
-                                        className="form__input__review form__input"
-                                        value={review.review}
-                                        required
-                                        onChange={(e) =>
-                                          setReviewData((prevReviewData) => {
-                                            const updatedReviewData = [
-                                              ...prevReviewData,
-                                            ];
-                                            updatedReviewData[index].review =
-                                              e.target.value;
-                                            return updatedReviewData;
-                                          })
-                                        }
-                                      ></textarea>
-                                    </div>
+                                    {editingIndex === index ? (
+                                      <div className="text-user">
+                                        <textarea
+                                          id="name"
+                                          className="form__input__review form__input"
+                                          value={review.review}
+                                          required
+                                          onChange={(e) =>
+                                            setReviewData((prevReviewData) => {
+                                              const updatedReviewData = [
+                                                ...prevReviewData,
+                                              ];
+                                              updatedReviewData[index].review =
+                                                e.target.value;
+                                              return updatedReviewData;
+                                            })
+                                          }
+                                        ></textarea>
+                                      </div>
+                                    ) : (
+                                      <div className="text-user">
+                                        {review.review}
+                                      </div>
+                                    )}
                                   </td>
                                   <td>
-                                    <div className="text-user">
-                                      <input
-                                        id="name"
-                                        className="form__input__rating form__input"
-                                        type="number"
-                                        value={review.rating}
-                                        required
-                                        name="rating"
-                                        onChange={(e) =>
-                                          setReviewData((prevReviewData) => {
-                                            const updatedReviewData = [
-                                              ...prevReviewData,
-                                            ];
-                                            updatedReviewData[index].rating =
-                                              e.target.value;
-                                            return updatedReviewData;
-                                          })
-                                        }
-                                      />
-                                    </div>
+                                    {editingIndex === index ? (
+                                      <div className="text-user">
+                                        <input
+                                          id="name"
+                                          className="form__input__rating form__input"
+                                          type="number"
+                                          value={review.rating}
+                                          required
+                                          name="rating"
+                                          onChange={(e) =>
+                                            setReviewData((prevReviewData) => {
+                                              const updatedReviewData = [
+                                                ...prevReviewData,
+                                              ];
+                                              updatedReviewData[index].rating =
+                                                e.target.value;
+                                              return updatedReviewData;
+                                            })
+                                          }
+                                        />
+                                      </div>
+                                    ) : (
+                                      <div className="text-user">
+                                        {review.rating}
+                                      </div>
+                                    )}
                                   </td>
                                   <td>
                                     <div className="event-wrap">
-                                      <button
-                                        className="btn btn--small btn--yellow "
-                                        type="button"
-                                        onClick={() =>
-                                          handleUpdateReview(review._id)
-                                        }
-                                        style={{ color: "#444" }}
-                                      >
-                                        Update Review
-                                      </button>
-                                      <button
-                                        className="btn btn--small btn--red "
-                                        type="button"
-                                        onClick={() =>
-                                          handleDeleteReview(review._id)
-                                        }
-                                      >
-                                        Delete Review
-                                      </button>
+                                      {editingIndex === index ? (
+                                        <>
+                                          {/* Save Review and Cancel buttons */}
+                                          <button
+                                            className="btn btn--small btn--yellow"
+                                            type="button"
+                                            onClick={() =>
+                                              handleUpdateReview(
+                                                review._id,
+                                                index
+                                              )
+                                            }
+                                            style={{ color: "#444" }}
+                                          >
+                                            Save Review
+                                          </button>
+                                          <button
+                                            className="btn btn--small btn-light"
+                                            type="button"
+                                            onClick={handleCancelUpdate}
+                                          >
+                                            Cancel
+                                          </button>
+                                        </>
+                                      ) : (
+                                        <>
+                                          {/* Update Review and Delete Review buttons */}
+                                          <button
+                                            className="btn btn--small btn--yellow"
+                                            type="button"
+                                            onClick={() =>
+                                              setEditingIndex(index)
+                                            }
+                                            style={{ color: "#444" }}
+                                          >
+                                            Update Review
+                                          </button>
+                                          <button
+                                            className="btn btn--small btn--red"
+                                            type="button"
+                                            onClick={() =>
+                                              handleDeleteReview(review._id)
+                                            }
+                                          >
+                                            Delete Review
+                                          </button>
+                                        </>
+                                      )}
                                     </div>
                                   </td>
                                 </tr>
