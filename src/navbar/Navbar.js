@@ -32,92 +32,96 @@ function Navbar() {
 
   return (
     <header>
-      <a href="/" className="text-black">
-        <img className="navbar-logo" src={logo} alt="Parikrama logo" />
-      </a>
-      <ul className="navbar-nav float-right">
-        {userData ? (
-          <React.Fragment>
-            <li className=" nav-item ">
-              <a className="btn-margin-top btn1" href="/">
-                All Tours
-              </a>
-            </li>
-            <li className=" nav-item ">
-              <a className="btn-margin-top btn1" href="/top-6-cheap">
-                Top 6 Affordable
-              </a>
-            </li>
-            <li className="dropdown dropdown-hover">
-              <button
-                className=" btn2 btn-transs"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                style={{
-                  backgroundColor: "transparent",
-                }}
-              >
-                <img
-                  src={userImage[`${userData.photo}`]}
-                  alt={userData.name}
-                  className="card__picture-img-user-nav"
-                />
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/user-profile" className="dropdown-item">
-                    {userData.name}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/user-profile" className="dropdown-item">
-                    Settings
-                  </Link>
-                </li>
-                <li>
-                  {userData.role === "user" && (
-                    <Link to="/my-tours" className="dropdown-item">
-                      My Bookings
+      <div>
+        <a href="/" className="text-black">
+          <img className="navbar-logo" src={logo} alt="Parikrama logo" />
+        </a>
+      </div>
+      <div>
+        <ul className="navbar-nav float-right">
+          {userData ? (
+            <React.Fragment>
+              <li className=" nav-item ">
+                <a className="btn-margin-top btn1" href="/">
+                  All Tours
+                </a>
+              </li>
+              <li className=" nav-item ">
+                <a className="btn-margin-top btn1" href="/top-6-cheap">
+                  Top 6 Affordable
+                </a>
+              </li>
+              <li className="dropdown dropdown-hover">
+                <button
+                  className=" btn2 btn-transs"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  style={{
+                    backgroundColor: "transparent",
+                  }}
+                >
+                  <img
+                    src={userImage[`${userData.photo}`]}
+                    alt={userData.name}
+                    className="card__picture-img-user-nav"
+                  />
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/user-profile" className="dropdown-item">
+                      {userData.name}
                     </Link>
-                  )}
-                </li>
-                <li>
-                  {(userData.role === "admin" ||
-                    userData.role === "lead-guide") && (
-                    <Link to="/add-tour" className="dropdown-item">
-                      Add Tours
+                  </li>
+                  <li>
+                    <Link to="/user-profile" className="dropdown-item">
+                      Settings
                     </Link>
-                  )}
-                </li>
-                <li>
-                  <button className="dropdown-item" onClick={handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </li>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <li className="nav-item">
-              <a className="btn1" href="/">
-                All Tours
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="btn1" href="/top-6-cheap">
-                Top 6 Affordable
-              </a>
-            </li>
-            <li className="nav-item">
-              <Link className="btn1" to="/login">
-                Log in
-              </Link>
-            </li>
-          </React.Fragment>
-        )}
-      </ul>
+                  </li>
+                  <li>
+                    {userData.role === "user" && (
+                      <Link to="/my-tours" className="dropdown-item">
+                        My Bookings
+                      </Link>
+                    )}
+                  </li>
+                  <li>
+                    {(userData.role === "admin" ||
+                      userData.role === "lead-guide") && (
+                      <Link to="/add-tour" className="dropdown-item">
+                        Add Tours
+                      </Link>
+                    )}
+                  </li>
+                  <li>
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </li>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <li className="nav-item">
+                <a className="btn1" href="/">
+                  All Tours
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="btn1" href="/top-6-cheap">
+                  Top 6 Affordable
+                </a>
+              </li>
+              <li className="nav-item">
+                <Link className="btn1" to="/login">
+                  Log in
+                </Link>
+              </li>
+            </React.Fragment>
+          )}
+        </ul>
+      </div>
     </header>
   );
 }
