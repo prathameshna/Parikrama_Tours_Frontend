@@ -45,12 +45,20 @@ function Home() {
     <>
       {loading ? (
         <div className="text-center" style={{ margin: "5rem" }}>
-          <h1 className="sr-only">Please wait tours are loading...</h1>
-          <div
-            className="spinner-border text-success"
-            style={{ height: "5rem", width: "5rem" }}
-            role="status"
-          ></div>
+          <h1 className="sr-only">
+            Please wait tours are loading &nbsp;
+            <div
+              className="spinner-border text-success"
+              style={{ height: "3rem", width: "3rem" }}
+              role="status"
+            ></div>
+          </h1>
+          <p style={{ fontSize: "2rem" }}>
+            Your patience is greatly appreciated as we initiate our backend
+            server on the render.com platform. <br /> It might take a brief
+            moment for it to be up and running. Thank you for your
+            understanding.
+          </p>
         </div>
       ) : (
         <main className="main">
