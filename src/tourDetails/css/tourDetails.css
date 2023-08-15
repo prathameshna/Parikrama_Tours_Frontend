@@ -173,6 +173,7 @@ body {
 
 .heading-secondary {
   font-size: 2.25rem;
+  margin-bottom: 2.2rem;
   text-transform: uppercase;
   font-weight: 700;
   background-image: -webkit-gradient(
@@ -259,9 +260,10 @@ body {
   font-weight: 700;
   margin-right: 2.25rem;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 .overview-box__text {
+  font-size: 1.7rem;
   text-transform: capitalize;
 }
 .overview-box__img {

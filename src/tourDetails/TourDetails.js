@@ -35,6 +35,7 @@ function TourDetails() {
       try {
         const response = await axios.get(`${base_url}/api/v1/tours/${id}`);
         setTour(response.data.data.data);
+        setLocations(response.data.data.data.locations);
         // Set loading to false when data is fetched
         setLoading(false);
       } catch (error) {
@@ -45,22 +46,18 @@ function TourDetails() {
     fetchData();
   }, [id]);
 
-  useEffect(() => {
-    // Set locations only if tour.locations is available
-    if (tour.locations) {
-      setLocations(tour.locations);
-    }
-  }, [tour]);
-
   if (error) {
-    return <div>Error loading tour data. Please try again later.</div>;
+    return (
+      <div className="text-center" style={{ margin: "5rem", fontSize: "2rem" }}>
+        Error loading tour data. Please try again later.
+      </div>
+    );
   }
 
   const handleBookingTourClick = (id) => {
     setSelectedTourId(id);
     setShowModal(true);
   };
-  console.log("selectedTourId :", selectedTourId);
 
   const closeModal = () => {
     setShowModal(false);
@@ -134,24 +131,36 @@ function TourDetails() {
                       <use xlinkHref={`${icons}#icon-calendar`}></use>
                     </svg>
                     <span className="overview-box__label">Next date</span>
-                    {tour && tour.startDates && tour.startDates[0] && (
+                    {tour && tour.startDates && (
                       <span className="overview-box__text">
-                        {new Date(tour.startDates[0]).toLocaleString("en-us", {
-                          month: "long",
-                          year: "numeric",
-                        })}
+                        {tour.startDates
+                          .map((startDate) => new Date(startDate))
+                          .filter((date) => date >= new Date())
+                          .sort((a, b) => a - b)
+                          .map((date) =>
+                            date.toLocaleDateString("en-US", {
+                              day: "numeric",
+                              month: "short",
+                              year: "numeric",
+                            })
+                          )[0] || "Dates Not Available"}
                       </span>
                     )}
                   </div>
-                  <div className="overview-box__detail">
-                    <svg className="overview-box__icon">
-                      <use xlinkHref={`${icons}#icon-trending-up`}></use>
-                    </svg>
-                    <span className="overview-box__label">Difficulty</span>
-                    <span className="overview-box__text">
-                      {tour.difficulty}
-                    </span>
-                  </div>
+                  {locations.length > 0 && (
+                    <div className="overview-box__detail">
+                      <svg className="overview-box__icon">
+                        <use xlinkHref={`${icons}#icon-map-pin`}></use>
+                      </svg>
+                      <span className="overview-box__label">Destinations</span>
+                      <span className="overview-box__text">
+                        {locations
+                          .map((location, index) => location.description)
+                          .join(", ")}
+                      </span>
+                    </div>
+                  )}
+
                   <div className="overview-box__detail">
                     <svg className="overview-box__icon">
                       <use xlinkHref={`${icons}#icon-user`}></use>

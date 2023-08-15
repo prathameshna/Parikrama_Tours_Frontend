@@ -48,7 +48,7 @@ function Navbar() {
               </li>
               <li className=" nav-item ">
                 <a className="btn-margin-top btn1" href="/top-6-cheap">
-                  Top 6 Affordable
+                  Top Affordables
                 </a>
               </li>
               <li className="dropdown dropdown-hover">
