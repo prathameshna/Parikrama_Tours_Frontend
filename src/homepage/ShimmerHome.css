@@ -14,6 +14,10 @@
   margin-top: 6rem;
 }
 
+.text-center-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 580px) {
   .shimmerHome-card-container {
     grid-template-columns: 1fr;
@@ -24,7 +28,16 @@
     min-width: 26rem;
     max-width: 30rem;
     padding: 0.2rem;
-    /* margin-left: 4rem; */
+    margin-left: 4rem;
+    margin-top: 3rem;
+  }
+
+  .text-center-desktop {
+    display: none;
+  }
+
+  .text-center-mobile {
+    display: block;
   }
 }
 
