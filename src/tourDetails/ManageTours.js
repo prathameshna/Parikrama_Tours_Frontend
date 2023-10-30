@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./css/manageTours.css";
 import icons from "../images/icons.svg";
@@ -56,52 +56,52 @@ function ManageTours() {
                 <div className="col-lg-12">
                   <ul className="nav custom-tab" id="myTab" role="tablist">
                     <li className="nav-item">
-                      <a
+                      <Link
                         className={`nav-link ${
                           activeTab === "2023" ? "active show" : ""
                         }`}
                         id="home-taThursday"
                         data-toggle="tab"
-                        href="/manage-tours/2023"
+                        to="/manage-tours/2023"
                         role="tab"
                         aria-controls="home"
                         aria-selected={activeTab === "2023" ? "true" : "false"}
                         onClick={() => handleTabClick("2023")}
                       >
                         2023
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a
+                      <Link
                         className={`nav-link ${
                           activeTab === "2024" ? "active show" : ""
                         }`}
                         id="profile-tab"
                         data-toggle="tab"
-                        href="/manage-tours/2024"
+                        to="/manage-tours/2024"
                         role="tab"
                         aria-controls="profile"
                         aria-selected={activeTab === "2024" ? "true" : "false"}
                         onClick={() => handleTabClick("2024")}
                       >
                         2024
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a
+                      <Link
                         className={`nav-link ${
                           activeTab === "2025" ? "active show" : ""
                         }`}
                         id="profile-tab"
                         data-toggle="tab"
-                        href="/manage-tours/2025"
+                        to="/manage-tours/2025"
                         role="tab"
                         aria-controls="profile"
                         aria-selected={activeTab === "2025" ? "true" : "false"}
                         onClick={() => handleTabClick("2025")}
                       >
                         2025
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                   <div className="tab-content" id="myTabContent">
@@ -142,14 +142,14 @@ function ManageTours() {
                                       {item.tours.length > 0 ? (
                                         <h3>
                                           {item.tours.map((tour) => (
-                                            <a
+                                            <Link
                                               key={tour.tourId}
-                                              href={`/tour-details/${tour.tourId}`}
+                                              to={`/tour-details/${tour.tourId}`}
                                             >
                                               <div className="text-center">
                                                 {tour.tourName}
                                               </div>
-                                            </a>
+                                            </Link>
                                           ))}
                                         </h3>
                                       ) : (

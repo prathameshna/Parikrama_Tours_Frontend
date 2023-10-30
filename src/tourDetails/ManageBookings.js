@@ -42,8 +42,10 @@ function ManageBookings() {
         const users = await Promise.all(
           responses.map((response) => response.json())
         );
+        console.log(users);
 
-        const userNames = users.map((user) => user.data.data.name);
+        const userNames = users.map((user) => user?.data?.data?.name);
+        console.log("userNames", userNames);
         setUserName(userNames);
       } catch (error) {
         console.error(error);

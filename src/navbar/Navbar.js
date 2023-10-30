@@ -33,23 +33,23 @@ function Navbar() {
   return (
     <header>
       <div>
-        <a href="/" className="text-black">
+        <Link to="/" className="text-black">
           <img className="navbar-logo" src={logo} alt="Parikrama logo" />
-        </a>
+        </Link>
       </div>
       <div>
-        <ul className="navbar-nav float-right">
+        <ul className="navbar-nav">
           {userData ? (
             <React.Fragment>
               <li className=" nav-item ">
-                <a className="btn-margin-top btn1" href="/">
+                <Link className="btn-margin-top btn1" to="/">
                   All Tours
-                </a>
+                </Link>
               </li>
               <li className=" nav-item ">
-                <a className="btn-margin-top btn1" href="/top-6-cheap">
+                <Link className="btn-margin-top btn1" to="/top-6-cheap">
                   Top Affordables
-                </a>
+                </Link>
               </li>
               <li className="dropdown dropdown-hover">
                 <button
@@ -104,14 +104,14 @@ function Navbar() {
           ) : (
             <React.Fragment>
               <li className="nav-item">
-                <a className="btn1" href="/">
+                <Link className="btn1" to="/">
                   All Tours
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="btn1" href="/top-6-cheap">
-                  Top 6 Affordable
-                </a>
+                <Link className="btn1" to="/top-6-cheap">
+                  Top Affordable
+                </Link>
               </li>
               <li className="nav-item">
                 <Link className="btn1" to="/login">

@@ -3,6 +3,8 @@ import axios from "axios";
 import "./home.css";
 import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
+import { useLocation, Link } from "react-router-dom";
+import ShimmerHome from "./ShimmerHome";
 
 // Import the entire 'tours' folder using require.context
 function importAll(r) {
@@ -20,14 +22,23 @@ function Home() {
   const userData = useSelector((state) => state.user);
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const path = location.pathname;
+  let tourType = "";
+
+  if (path === "/top-6-cheap") {
+    tourType = "top-6-cheap";
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let url = `${base_url}/api/v1/tours`;
 
+        console.log("tourType: ", tourType);
+
         // Check if the URL should be changed to "top-6-cheap"
-        if (window.location.href.includes("top-6-cheap")) {
+        if (tourType === "top-6-cheap") {
           url = `${base_url}/api/v1/tours/top-6-cheap`;
         }
         const response = await axios.get(url);
@@ -39,27 +50,14 @@ function Home() {
       }
     };
     fetchData();
-  }, []);
+  }, [tourType]);
 
   return (
     <>
       {loading ? (
-        <div className="text-center" style={{ margin: "5rem" }}>
-          <h1 className="sr-only">
-            Please wait tours are loading &nbsp;
-            <div
-              className="spinner-border text-success"
-              style={{ height: "3rem", width: "3rem" }}
-              role="status"
-            ></div>
-          </h1>
-          <p style={{ fontSize: "2rem" }}>
-            Your patience is greatly appreciated as we initiate our backend
-            server on the render.com platform. <br /> It might take a brief
-            moment for it to be up and running. Thank you for your
-            understanding.
-          </p>
-        </div>
+        <>
+          <ShimmerHome />
+        </>
       ) : (
         <main className="main">
           <div className="card-container">
@@ -140,25 +138,24 @@ function Home() {
                     </div>
                     <div className="row" style={{ alignItems: "center" }}>
                       <div className="col-md-12">
-                        <a
+                        <Link
+                          to={`/tour-details/${tour.id}`}
                           className="btn btn--green btn--small"
-                          // href={`/tour/${tour.slug}`}
-                          href={`/tour-details/${tour.id}`}
                         >
                           Details
-                        </a>
+                        </Link>
                       </div>
                       <div className="col-md-12">
                         {((userData && userData.role === "admin") ||
                           "lead-guide") && (
                           <div className="vertical-button">
-                            <a
+                            <Link
                               className="btn btn--yellow btn--small"
                               // href={`/tour/${tour.slug}`}
-                              href={`/tour-update/${tour.id}`}
+                              to={`/tour-update/${tour.id}`}
                             >
                               Update
-                            </a>
+                            </Link>
                           </div>
                         )}
                       </div>
@@ -176,13 +173,13 @@ function Home() {
                       </span>
                       <span className="card__footer-text">{` rating (${tour.ratingsQuantity})`}</span>
                     </p>
-                    <a
+                    <Link
                       className="btn btn--green btn--small"
                       // href={`/tour/${tour.slug}`}
-                      href={`/tour-details/${tour.id}`}
+                      to={`/tour-details/${tour.id}`}
                     >
                       Details
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>

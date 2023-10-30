@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/login.css";
 import axios from "axios";
@@ -75,10 +75,6 @@ function SignupUser() {
         );
       }
     }
-  };
-
-  const handleRegisterClick = () => {
-    navigate("/login");
   };
 
   return (
@@ -177,13 +173,13 @@ function SignupUser() {
                 </button>
                 <p className="para-small">
                   Do you have an account?
-                  <a
-                    onClick={handleRegisterClick}
+                  <Link
+                    to="/login"
                     className="link-primary"
                     style={{ cursor: "pointer" }}
                   >
                     Login
-                  </a>
+                  </Link>
                 </p>
               </div>
             </form>

@@ -368,10 +368,3 @@
     padding: 1rem 1.5rem;
   }
 }
-
-/* Laptops and Desktops */
-/* @media screen and (min-width: 1050px) {
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */

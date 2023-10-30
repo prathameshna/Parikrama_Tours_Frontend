@@ -66,7 +66,7 @@ function ManageReviews() {
           responses.map((response) => response.json())
         );
 
-        const tourNames = tours.map((tour) => tour.data.data.name);
+        const tourNames = tours.map((tour) => tour?.data?.data?.name);
         setTourName(tourNames);
       } catch (error) {
         console.error(error);

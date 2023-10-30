@@ -14,6 +14,7 @@ import {
   faBriefcase,
   faMap,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function SideNav({ isAdmin }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,55 +28,55 @@ function SideNav({ isAdmin }) {
       </div>
       <nav className="user-view__menu">
         <div className="side-nav">
-          <a href="/user-profile">
+          <Link to="/user-profile">
             <FontAwesomeIcon icon={faUser} />
             {isOpen && <p className="text-update">Settings</p>}
-          </a>
+          </Link>
         </div>
         <div className="side-nav">
-          <a href="/my-tours">
+          <Link to="/my-tours">
             <FontAwesomeIcon icon={faBriefcase} />
             {isOpen && <p className="text-update">My bookings</p>}
-          </a>
+          </Link>
         </div>
         <div className="side-nav">
-          <a href="/my-reviews">
+          <Link to="/my-reviews">
             <FontAwesomeIcon icon={faStar} />
             {isOpen && <p className="text-update">My reviews</p>}
-          </a>
+          </Link>
         </div>
         <div className="side-nav">
-          <a href="#">
+          <Link to="#">
             <FontAwesomeIcon icon={faCreditCard} />
             {isOpen && <p className="text-update">Billing</p>}
-          </a>
+          </Link>
         </div>
         {isAdmin && (
           <div className="admin-nav">
             {isOpen && <h5 className="admin-nav__heading">Admin</h5>}
             <div className="side-nav">
-              <a href="/manage-tours/2023">
+              <Link to="/manage-tours/2023">
                 <FontAwesomeIcon icon={faMap} />
                 {isOpen && <p className="text-update">Manage tours</p>}
-              </a>
+              </Link>
             </div>
             <div className="side-nav">
-              <a href="/manage-users">
+              <Link to="/manage-users">
                 <FontAwesomeIcon icon={faUser} />
                 {isOpen && <p className="text-update">Manage users</p>}
-              </a>
+              </Link>
             </div>
             <div className="side-nav">
-              <a href="/manage-reviews">
+              <Link to="/manage-reviews">
                 <FontAwesomeIcon icon={faStar} />
                 {isOpen && <p className="text-update">Manage reviews</p>}
-              </a>
+              </Link>
             </div>
             <div className="side-nav">
-              <a href="/manage-bookings">
+              <Link to="/manage-bookings">
                 <FontAwesomeIcon icon={faBriefcase} />
                 {isOpen && <p className="text-update">Manage bookings</p>}
-              </a>
+              </Link>
             </div>
           </div>
         )}

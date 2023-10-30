@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./css/forgotPasswordForm.css";
 
@@ -69,12 +69,12 @@ function ModalForm({ closeModal }) {
             </Button>
           </form>
           <div className="d-flex justify-content-between mt-4 button-custom">
-            <a className="a-custom" href="/login">
+            <Link className="a-custom" to="/login">
               Login
-            </a>
-            <a className="a-custom" href="/signup">
+            </Link>
+            <Link className="a-custom" to="/signup">
               Register
-            </a>
+            </Link>
           </div>
         </Modal.Body>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/login.css";
 import axios from "axios";
@@ -65,10 +65,6 @@ function LoginUser() {
 
   const closeModal = () => {
     setShowModal(false);
-  };
-
-  const handleRegisterClick = () => {
-    navigate("/signup");
   };
 
   return (
@@ -139,21 +135,20 @@ function LoginUser() {
                 &nbsp;
                 <div className="para-small">
                   Don't have an account?
-                  <a
-                    onClick={handleRegisterClick}
+                  <Link
+                    to="/signup"
                     className="link-primary"
                     style={{ cursor: "pointer" }}
                   >
                     Register
-                  </a>
+                  </Link>
                   <br />
-                  <a
-                    href="#"
+                  <Link
                     onClick={handleForgotPasswordClick}
                     className="link-primary"
                   >
                     Forgot Password?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

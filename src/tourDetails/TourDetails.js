@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./css/tourDetails.css";
 import logo from "./../images/parikrama_logo.jpg";
@@ -305,6 +305,7 @@ function TourDetails() {
                   </>
                 )}
               </div>
+              Link
               <div className="cta__text-container">
                 <h2 className="heading-secondary header-margin">
                   What are you waiting for?
@@ -322,27 +323,27 @@ function TourDetails() {
                 {userData ? (
                   userData.role === "admin" ||
                   userData.role === "lead-guide" ? (
-                    <a
+                    <Link
                       className="btn btn--green span-all-rows button-margin"
-                      href={`/tour-update/${tour.id}`}
+                      to={`/tour-update/${tour.id}`}
                     >
                       Update Tour
-                    </a>
+                    </Link>
                   ) : (
-                    <a
+                    <Link
                       className="btn btn--green span-all-rows button-margin"
                       onClick={() => handleBookingTourClick(tour.id)}
                     >
                       Book tour now!
-                    </a>
+                    </Link>
                   )
                 ) : (
-                  <a
+                  <Link
                     className="btn btn--green span-all-rows button-margin"
-                    href="/login"
+                    to="/login"
                   >
                     Login to book tour
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>

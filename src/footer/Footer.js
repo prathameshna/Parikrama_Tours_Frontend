@@ -1,6 +1,7 @@
 import "./footer.css";
 import React from "react";
 import logo from "./../images/parikrama_footer_img.jpg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -11,19 +12,19 @@ function Footer() {
         </div>
         <ul className="footer__nav">
           <li>
-            <a href="#">About us</a>
+            <Link to="#">About us</Link>
           </li>
           <li>
-            <a href="#">Download apps</a>
+            <Link to="#">Download apps</Link>
           </li>
           <li>
-            <a href="#">Become a guide</a>
+            <Link to="#">Become a guide</Link>
           </li>
           <li>
-            <a href="#">Careers</a>
+            <Link to="#">Careers</Link>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <Link to="#">Contact</Link>
           </li>
         </ul>
         <p className="footer__copyright">&copy; by Prathamesh Nadhe</p>
