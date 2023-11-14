@@ -291,7 +291,6 @@ function TourDetails() {
                   </>
                 )}
               </div>
-              Link
               <div className="cta__text-container">
                 <h2 className="heading-secondary header-margin">
                   What are you waiting for?
