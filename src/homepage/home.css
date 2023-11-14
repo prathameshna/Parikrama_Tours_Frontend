@@ -15,6 +15,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3rem;
 }
+
 .card {
   border-radius: 0.1875rem;
   overflow: hidden;
@@ -32,16 +33,20 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  border-radius: 0.4rem;
 }
+
 .card__header {
   position: relative;
 }
+
 .card__picture {
   position: relative;
   -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
   clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
   height: 22rem;
 }
+
 .card__picture-overlay {
   position: absolute;
   width: 100%;
@@ -72,7 +77,7 @@
 }
 .card__text {
   grid-column: 1 / -1;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-style: italic;
   margin-top: -1rem;
   margin-bottom: 0.75rem;
@@ -284,7 +289,7 @@
 
 .heading-tertirary span {
   padding: 1rem 1.5rem;
-  line-height: 1;
+  line-height: 1.5;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   background-image: -webkit-gradient(
@@ -327,7 +332,7 @@
   }
 
   .heading-tertirary {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .heading-tertirary span {

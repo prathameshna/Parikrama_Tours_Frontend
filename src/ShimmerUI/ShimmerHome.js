@@ -15,7 +15,11 @@ const ShimmerHome = () => {
   return (
     <div className="">
       <div className="shimmerHome-card-container">
-        <div className={`shimmerHome-card ${showContent ? "visible" : ""}`}>
+        <div
+          className={`shimmerHome-card top-card ${
+            showContent ? "visible" : ""
+          }`}
+        >
           <div className="text-center-mobile">
             {showContent && (
               <>
@@ -32,7 +36,11 @@ const ShimmerHome = () => {
             )}
           </div>
         </div>
-        <div className={`shimmerHome-card ${showContent ? "visible" : ""}`}>
+        <div
+          className={`shimmerHome-card top-card ${
+            showContent ? "visible" : ""
+          }`}
+        >
           <div className="text-center-desktop">
             {showContent && (
               <>
@@ -49,10 +57,10 @@ const ShimmerHome = () => {
             )}
           </div>
         </div>
-        <div className="shimmerHome-card"></div>
-        <div className="shimmerHome-card"></div>
-        <div className="shimmerHome-card"></div>
-        <div className="shimmerHome-card"></div>
+        <div className="shimmerHome-card top-card"></div>
+        <div className="shimmerHome-card bottom-card"></div>
+        <div className="shimmerHome-card bottom-card"></div>
+        <div className="shimmerHome-card bottom-card"></div>
       </div>
     </div>
   );
