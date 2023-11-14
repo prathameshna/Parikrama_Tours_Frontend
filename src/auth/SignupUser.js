@@ -155,10 +155,7 @@ function SignupUser() {
                 />
               </div>
 
-              <div
-                className="text-center text-lg-start mt-4 pt-2"
-                style={{ display: "flex", alignItems: "center" }}
-              >
+              <div className="login-text-center text-lg-start mt-4 pt-2">
                 <button
                   type="submit"
                   className="btn btn-primary btn-lg"

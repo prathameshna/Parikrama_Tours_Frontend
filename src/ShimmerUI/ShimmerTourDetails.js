@@ -18,7 +18,7 @@ const ShimmerTourDetails = () => {
         className={`tour-section-header ${showTextCenter ? "visible" : ""}`}
       >
         {showTextCenter && (
-          <div className="text-center">
+          <div className="tour-text-center">
             <h1 className="tour-heading">
               Please wait tours details are loading
             </h1>

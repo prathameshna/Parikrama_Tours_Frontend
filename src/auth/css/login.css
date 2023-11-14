@@ -48,3 +48,9 @@
   justify-content: end;
   align-items: center;
 }
+
+.login-text-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

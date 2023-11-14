@@ -117,7 +117,7 @@ function LoginUser() {
               </div>
 
               <div
-                className="text-center text-lg-start mt-4 pt-2"
+                className="login-text-center text-lg-start mt-4 pt-2"
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <button
