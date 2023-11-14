@@ -134,20 +134,24 @@ function LoginUser() {
                 </button>
                 &nbsp;
                 <div className="para-small">
-                  Don't have an account?
-                  <Link
-                    to="/signup"
-                    className="link-primary"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Register
-                  </Link>
-                  <br />
+                  <div>
+                    Don't have an account?
+                    <Link
+                      to="/signup"
+                      className="link-primary"
+                      style={{ cursor: "pointer" }}
+                    >
+                      Register
+                    </Link>
+                  </div>
                   <Link
                     onClick={handleForgotPasswordClick}
                     className="link-primary"
                   >
                     Forgot Password?
+                  </Link>
+                  <Link to="/demo-users" className="link-primary">
+                    Demo Users Data
                   </Link>
                 </div>
               </div>

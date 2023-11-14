@@ -1,0 +1,20 @@
+/* .table {
+  height: 15rem;
+  width: 50%;
+  font-size: 2rem;
+  margin-top: 15rem;
+  margin-bottom: 15rem;
+} */
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* Set the height to whatever suits your design */
+}
+
+.table {
+  font-size: 2rem;
+  text-align: center;
+  width: 60%;
+}

@@ -4,7 +4,7 @@ import "./home.css";
 import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
-import ShimmerHome from "./ShimmerHome";
+import ShimmerHome from "../ShimmerUI/ShimmerHome";
 
 // Import the entire 'tours' folder using require.context
 function importAll(r) {

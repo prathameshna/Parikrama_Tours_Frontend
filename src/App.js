@@ -23,6 +23,7 @@ import UserBookings from "./auth/UserBookings";
 import UserReviews from "./auth/UserReviews";
 import ProtectedRoute from "./ProtectedRoute";
 import ManageBookings from "./tourDetails/ManageBookings";
+import DemoUsers from "./auth/DemoUsers";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/tour-details/:id" element={<TourDetails />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/demo-users" element={<DemoUsers />} />
           <Route exact path="/user-profile" element={<UpdateUser />} />
           <Route exact path="/my-tours" element={<UserBookings />} />
           <Route exact path="/my-reviews" element={<UserReviews />} />

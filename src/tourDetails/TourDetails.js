@@ -7,6 +7,7 @@ import icons from "../images/icons.svg";
 import { useSelector } from "react-redux";
 import BookingModal from "./BookingModal";
 import MapboxMap from "./MapboxMap";
+import ShimmerTourDetails from "../ShimmerUI/ShimmerTourDetails";
 
 function importAll(r) {
   let images = {};
@@ -66,22 +67,7 @@ function TourDetails() {
   return (
     <>
       {loading ? (
-        <div className="text-center" style={{ margin: "5rem" }}>
-          <h1 className="sr-only">
-            Please wait tours are loading &nbsp;
-            <div
-              className="spinner-border text-success"
-              style={{ height: "3rem", width: "3rem" }}
-              role="status"
-            ></div>
-          </h1>
-          <p style={{ fontSize: "2rem" }}>
-            Your patience is greatly appreciated as we initiate our backend
-            server on the render.com platform. <br /> It might take a brief
-            moment for it to be up and running. Thank you for your
-            understanding.
-          </p>
-        </div>
+        <ShimmerTourDetails />
       ) : (
         <>
           <section className="section-header">

@@ -172,13 +172,18 @@ function SignupUser() {
                   Signup
                 </button>
                 <p className="para-small">
-                  Do you have an account?
-                  <Link
-                    to="/login"
-                    className="link-primary"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Login
+                  <div>
+                    Do you have an account?
+                    <Link
+                      to="/login"
+                      className="link-primary"
+                      style={{ cursor: "pointer" }}
+                    >
+                      Login
+                    </Link>
+                  </div>
+                  <Link to="/demo-users" className="link-primary">
+                    Demo Users Data
                   </Link>
                 </p>
               </div>
