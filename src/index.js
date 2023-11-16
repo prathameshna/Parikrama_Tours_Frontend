@@ -6,7 +6,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import favicon from "./images/parikrama_logo.jpg";
+import favicon from "./utils/images/parikrama_logo.jpg";
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -41,7 +41,6 @@ const userData = localStorage.getItem("userData");
 if (userData) {
   store.dispatch({ type: "SET_USER_DATA", payload: JSON.parse(userData) });
 }
-
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);

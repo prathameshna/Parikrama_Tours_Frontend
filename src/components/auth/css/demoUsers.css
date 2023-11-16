@@ -1,0 +1,23 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* Set the height to whatever suits your design */
+}
+
+.table-demo {
+  font-size: 2rem;
+  text-align: center;
+  width: 60%;
+}
+
+@media screen and (max-width: 580px) {
+  .table-container {
+    height: 30vh;
+  }
+
+  .table-demo {
+    font-size: 1.2rem;
+    width: 90%;
+  }
+}
