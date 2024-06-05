@@ -37,6 +37,7 @@ function ManageUsers() {
         const response = await axios.get(`${base_url}/api/v1/users`);
         console.log("response: ", response);
         setUserData(response.data.data.data);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);

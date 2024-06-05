@@ -47,6 +47,10 @@ function TourDetails() {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (error) {
     return (
       <div className="text-center" style={{ margin: "5rem", fontSize: "2rem" }}>

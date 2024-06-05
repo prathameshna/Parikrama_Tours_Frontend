@@ -5,6 +5,7 @@ const ShimmerHome = () => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timer = setTimeout(() => {
       setShowContent(true);
     }, 5000); // 5 seconds in milliseconds

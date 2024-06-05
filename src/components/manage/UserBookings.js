@@ -30,8 +30,8 @@ function UserBookings() {
           `${base_url}/api/v1/booking/${userId}`
         );
         const bookedTours = response.data;
-        // console.log(bookedTours.data);
         setBookings(bookedTours.data);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);

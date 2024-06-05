@@ -5,6 +5,7 @@ const ShimmerTourDetails = () => {
   const [showTextCenter, setShowTextCenter] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timer = setTimeout(() => {
       setShowTextCenter(true);
     }, 5000); // 5 seconds in milliseconds

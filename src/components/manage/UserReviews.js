@@ -66,10 +66,10 @@ function UserReviews() {
         const tours = await Promise.all(
           responses.map((response) => response.json())
         );
-        console.log(tours);
 
         const tourNames = tours.map((tour) => tour.data.data.name);
         setTourName(tourNames);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.error(error);
         // Handle error case
