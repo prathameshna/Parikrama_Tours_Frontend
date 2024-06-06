@@ -39,6 +39,7 @@ function TourDetails() {
         setLocations(response.data.data.data.locations);
         // Set loading to false when data is fetched
         setLoading(false);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);

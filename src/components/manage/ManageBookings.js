@@ -17,7 +17,6 @@ function ManageBookings() {
       try {
         const response = await axios.get(`${base_url}/api/v1/booking`);
         setBookings(response.data.data.data);
-        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);

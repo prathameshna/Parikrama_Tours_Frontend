@@ -12,72 +12,45 @@ function UserReviews() {
   const [editingIndex, setEditingIndex] = useState(-1);
   const [error, setError] = useState(false);
   const [tourName, setTourName] = useState("");
-  const [base_url, setBaseUrl] = useState("");
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    setBaseUrl(process.env.REACT_APP_BASE_URL);
-  }, []);
-
-  useEffect(() => {
+    // Set user ID if user is available
     if (user) {
       setUserId(user._id);
     }
   }, [user]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${base_url}/api/v1/reviews`);
-
-        const filteredReviews = response.data.data.data.filter(
-          (review) => review.user._id === userId
-        );
-        // console.log("filteredReviews: ", filteredReviews);
-        setReviewData(
-          filteredReviews.map((review) => ({
-            _id: review._id,
-            review: review.review,
-            rating: review.rating,
-            tour: review.tour,
-          }))
-        );
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(true);
-      }
-    };
     fetchData();
-  }, [userId, base_url]);
+  }, []);
 
-  useEffect(() => {
-    const fetchTourNames = async () => {
-      try {
-        if (reviewData.length === 0) {
-          // No reviews available, return early
-          return;
-        }
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${base_url}/api/v1/reviews`);
 
-        const tourIds = reviewData.map((review) => review.tour);
-        const requests = tourIds.map((tourId) =>
-          fetch(`${base_url}/api/v1/tours/${tourId}`)
-        );
-        const responses = await Promise.all(requests);
+      const filteredReviews = response.data.data.data.filter(
+        (review) => review.user._id === userId
+      );
+      // console.log("filteredReviews: ", filteredReviews);
 
-        const tours = await Promise.all(
-          responses.map((response) => response.json())
-        );
+      setReviewData(
+        filteredReviews.map((review) => ({
+          _id: review._id,
+          review: review.review,
+          rating: review.rating,
+          tour: review.tour,
+        }))
+      );
 
-        const tourNames = tours.map((tour) => tour.data.data.name);
-        setTourName(tourNames);
-        window.scrollTo(0, 0);
-      } catch (error) {
-        console.error(error);
-        // Handle error case
-      }
-    };
-
-    fetchTourNames();
-  }, [reviewData, base_url]);
+      const tourIds = filteredReviews.map((review) => review.tour);
+      const tourName = tourIds.map((tour) => tour.name);
+      setTourName(tourName);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setError(true);
+    }
+  };
 
   const handleUpdateReview = async (id, index) => {
     const url = `${base_url}/api/v1/reviews/${id}`;
@@ -132,13 +105,13 @@ function UserReviews() {
     setEditingIndex(-1);
   };
 
-  if (error) {
-    return (
-      <div className="text-center" style={{ margin: "5rem", fontSize: "2rem" }}>
-        Error loading tour data. Please try again later.
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="text-center" style={{ margin: "5rem", fontSize: "2rem" }}>
+  //       Error loading tour data. Please try again later.
+  //     </div>
+  //   );
+  // }
 
   return (
     <main className="main1">

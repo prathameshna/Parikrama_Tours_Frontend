@@ -34,19 +34,19 @@ function ManageReviews() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${base_url}/api/v1/reviews`);
-        console.log("response: ", response);
-        setReviewData(response.data.data.data);
-        window.scrollTo(0, 0);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(true);
-      }
-    };
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${base_url}/api/v1/reviews`);
+      console.log("response: ", response);
+      setReviewData(response.data.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setError(true);
+    }
+  };
 
   const handleDeleteUser = async (id) => {
     const confirmDelete = window.confirm(

@@ -33,7 +33,6 @@ function ManageTours() {
           `${base_url}/api/v1/tours/monthly-plan/${year}`
         );
         setTour(response.data.data.plan);
-        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(true);
